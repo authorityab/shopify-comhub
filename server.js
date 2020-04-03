@@ -43,7 +43,7 @@ app.prepare().then(() => {
         });
       const productsRegistration = await registerWebhook({
          address: `${HOST}/webhooks/products/create`,
-         topic: 'PRODUCTS_CREATE',
+         topic: 'products/create',
          accessToken,
          shop,
          apiVersion: ApiVersion.October19
@@ -51,7 +51,7 @@ app.prepare().then(() => {
 
       const ordersRegistration = await registerWebhook({
         address: `${HOST}/webhooks/orders/create`,
-        topic: 'ORDERS_CREATE',
+        topic: 'orders/create',
         accessToken,
         shop,
         apiVersion: ApiVersion.October19

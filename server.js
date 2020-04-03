@@ -40,7 +40,33 @@ app.prepare().then(() => {
           secure: true,
           sameSite: 'none'
         });
-       ctx.redirect('/');
+      const productsRegistration = await registerWebhook({
+         address: `${HOST}/webhooks/products/create`,
+         topic: 'PRODUCTS_CREATE',
+         accessToken,
+         shop,
+         apiVersion: ApiVersion.October19
+       });
+
+      const ordersRegistration = await registerWebhook({
+        address: `${HOST}/webhooks/orders/create`,
+        topic: 'ORDERS_CREATE',
+        accessToken,
+        shop,
+        apiVersion: ApiVersion.October19
+      });
+
+       if (productsRegistration.success) {
+         console.log('Successfully registered product webhook!');
+       } else {
+         console.log('Failed to register product webhook', registration.result);
+       }
+
+       if (ordersRegistration.success) {
+         console.log('Successfully registered order webhook!');
+       } else {
+         console.log('Failed to register order webhook', registration.result);
+       }
      },
    }),
  );
@@ -51,14 +77,15 @@ app.prepare().then(() => {
    console.log('received webhook order: ', ctx.state.webhook);
  });
 
- server.use(verifyRequest());
- server.use(async (ctx) => {
-   await handle(ctx.req, ctx.res);
-   ctx.respond = false;
-   ctx.res.statusCode = 200;
-   return
+ router.post('/webhooks/products/create', webhook, (ctx) => {
+   console.log('received webhook product: ', ctx.state.webhook);
  });
 
+ router.get('*', verifyRequest(), async (ctx) => {
+  await handle(ctx.req, ctx.res);
+  ctx.respond = false;
+  ctx.res.statusCode = 200;
+ });
  server.use(router.allowedMethods());
  server.use(router.routes());
 

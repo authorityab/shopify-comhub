@@ -8,10 +8,9 @@ const session = require('koa-session');
 const Router = require('koa-router');
 const { ApiVersion } = require('@shopify/koa-shopify-graphql-proxy');
 const {receiveWebhook, registerWebhook} = require('@shopify/koa-shopify-webhooks');
+const fetch = require('node-fetch');
 
 dotenv.config();
-
-
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -80,6 +79,21 @@ app.prepare().then(() => {
 
  router.post('/webhooks/orders/create', webhook, (ctx) => {
    console.log('received webhook order: ', ctx.state.webhook);
+
+   const body = { a: 1 };
+
+    fetch('https://comhub-dev-apim.azure-api.net/order/receive', {
+        method: 'post',
+        body:    JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json',
+          'Ocp-Apim-Subscription-Key': '6c8d06357bb0403c8aa88e7d126bb863;product=comhub-user',
+          'Ocp-Apim-Trace': true
+      },
+    })
+    .then(res => res.json())
+    .then(json => console.log(json));
+
  });
 
  router.post('/webhooks/products/create', webhook, (ctx) => {

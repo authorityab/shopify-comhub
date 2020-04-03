@@ -61,12 +61,16 @@ app.prepare().then(() => {
          console.log('Successfully registered product webhook!');
        } else {
          console.log('Failed to register product webhook', productsRegistration.result);
+
+         console.log(registration.result.data.webhookSubscriptionCreate.userErrors);
        }
 
        if (ordersRegistration.success) {
          console.log('Successfully registered order webhook!');
        } else {
          console.log('Failed to register order webhook', ordersRegistration.result);
+
+         console.log(registration.result.data.webhookSubscriptionCreate.userErrors);
        }
      },
    }),

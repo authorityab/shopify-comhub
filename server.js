@@ -6,6 +6,7 @@ const { default: createShopifyAuth } = require('@shopify/koa-shopify-auth');
 const { verifyRequest } = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 const Router = require('koa-router');
+const { ApiVersion } = require('@shopify/koa-shopify-graphql-proxy');
 const {receiveWebhook, registerWebhook} = require('@shopify/koa-shopify-webhooks');
 
 dotenv.config();

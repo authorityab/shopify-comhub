@@ -62,7 +62,7 @@ app.prepare().then(() => {
        } else {
          console.log('Failed to register product webhook', productsRegistration.result);
 
-         console.log(registration.result.data.webhookSubscriptionCreate.userErrors);
+         console.log(productsRegistration.result.data.webhookSubscriptionCreate.userErrors);
        }
 
        if (ordersRegistration.success) {
@@ -70,7 +70,7 @@ app.prepare().then(() => {
        } else {
          console.log('Failed to register order webhook', ordersRegistration.result);
 
-         console.log(registration.result.data.webhookSubscriptionCreate.userErrors);
+         console.log(ordersRegistration.result.data.webhookSubscriptionCreate.userErrors);
        }
      },
    }),

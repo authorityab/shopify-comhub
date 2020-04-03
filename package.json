@@ -6,14 +6,19 @@
   "author": "Authority",
   "license": "MIT",
   "dependencies": {
+    "@shopify/koa-shopify-auth": "^3.1.58",
+    "dotenv": "^8.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.11.0",
+    "koa-session": "^5.13.1",
     "next": "^9.3.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "node server.js -p $PORT",
     "heroku-postbuild": "npm run build"
   }
 }

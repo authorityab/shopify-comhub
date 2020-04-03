@@ -45,7 +45,7 @@ app.prepare().then(() => {
    }),
  );
 
- const webhook = receiveWebhook({ secret: SHOPIFY_API_SECRET });
+ const webhook = receiveWebhook({ secret: SHOPIFY_API_SECRET_KEY });
 
  router.post('/webhooks/orders/create', webhook, (ctx) => {
    console.log('received webhook order: ', ctx.state.webhook);

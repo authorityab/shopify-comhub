@@ -13,7 +13,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
+const SHOPIFY_API_SECRET_KEY = process.env.SHOPIFY_API_SECRET;
+const  SHOPIFY_API_KEY  = process.env.SHOPIFY_API_KEY;
 
 console.log('SHOPIFY_API_SECRET_KEY: ' + SHOPIFY_API_SECRET_KEY);
 console.log('SHOPIFY_API_KEY: ' + SHOPIFY_API_KEY);

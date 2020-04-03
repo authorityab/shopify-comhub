@@ -1,0 +1,1 @@
+{"name":"shopify-comhub","version":"1.0.0","description":"Shopify node.js middleware for comhub","main":"index.js","author":{"name":"Authority"},"license":"MIT","dependencies":{"next":"^9.3.4","react":"^16.13.1","react-dom":"^16.13.1"},"scripts":{"dev":"next","build":"next build","start":"next start"},"readme":"ERROR: No README data found!","_id":"shopify-comhub@1.0.0"}

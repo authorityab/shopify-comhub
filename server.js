@@ -49,16 +49,19 @@ app.prepare().then(() => {
       apiKey: SHOPIFY_API_KEY,
       secret: SHOPIFY_API_SECRET_KEY,
       scopes: ['read_products', 'write_products', 'read_orders', 'write_orders'],
+
       async afterAuth(ctx) {
         const {
           shop,
           accessToken
         } = ctx.session;
+
         ctx.cookies.set('shopOrigin', shop, {
           httpOnly: false,
           secure: true,
           sameSite: 'none'
         });
+
         const productsRegistration = await registerWebhook({
           address: `${HOST}/webhooks/products/create`,
           topic: 'PRODUCTS_CREATE',

@@ -101,7 +101,6 @@ app.prepare().then(() => {
   router.post('/webhooks/orders/create', webhook, (ctx) => {
     console.log('received webhook order: ', ctx.state.webhook);
 
-
     fetch('https://comhub-dev-apim.azure-api.net/order/receive', {
         method: 'post',
         body: JSON.stringify(ctx.state.webhook.payload),

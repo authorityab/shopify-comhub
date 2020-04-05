@@ -1,22 +1,27 @@
-export default class Server() {
+require('isomorphic-fetch');
+
+import core from '@shopify-comhub/core';
+const next = require('next');
+const dotenv = require('dotenv');
+const session = require('koa-session');
+
+const Koa = require('koa');
+const Router = require('koa-router');
+
+const {  verifyRequest  } = require('@shopify/koa-shopify-auth');
+const {  ApiVersion  } = require('@shopify/koa-shopify-graphql-proxy');
+const {  default: createShopifyAuth  } = require('@shopify/koa-shopify-auth');
+const {  receiveWebhook, registerWebhook  } = require('@shopify/koa-shopify-webhooks');
+
+export default class Server {
+
+constructor() {}
+
   init() {
 
     console.log('server init');
 
-    require('isomorphic-fetch');
 
-    import core from '@shopify-comhub/core';
-    const next = require('next');
-    const dotenv = require('dotenv');
-    const session = require('koa-session');
-
-    const Koa = require('koa');
-    const Router = require('koa-router');
-
-    const {  verifyRequest  } = require('@shopify/koa-shopify-auth');
-    const {  ApiVersion  } = require('@shopify/koa-shopify-graphql-proxy');
-    const {  default: createShopifyAuth  } = require('@shopify/koa-shopify-auth');
-    const {  receiveWebhook, registerWebhook  } = require('@shopify/koa-shopify-webhooks');
 
     dotenv.config();
 

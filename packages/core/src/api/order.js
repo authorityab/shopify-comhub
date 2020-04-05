@@ -1,16 +1,15 @@
 
+const fetch = require('node-fetch');
 
-const Order = require('./api/order.js');
 
-class ComHub {
-  constructur() {
-    console.log('comhub');
-    this.baseUrl = 'https://comhub-dev-apim.azure-api.net';
+class Order {
+  constructur(baseUrl) {
+    this.baseUrl = baseUrl;
+    console.log('order ' + baseUrl);
   }
 
-  createOrder(order) {
-    console.log('baseUrl: ' + this.baseUrl);
-    fetch('https://comhub-dev-apim.azure-api.net/order/receive', {
+  create(order) {
+    fetch(this.baseUrl + '/order/receive', {
         method: 'post',
         body: JSON.stringify(order),
         headers: {
@@ -25,6 +24,4 @@ class ComHub {
   }
 }
 
-
-
-module.exports = ComHub
+module.exports = Order;

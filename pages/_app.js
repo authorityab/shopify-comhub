@@ -4,7 +4,7 @@ import { AppProvider } from '@shopify/polaris';
 import '@shopify/polaris/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 
-class MyApp extends App {
+class ShopifyComHubApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
@@ -21,4 +21,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default ShopifyComHubApp;

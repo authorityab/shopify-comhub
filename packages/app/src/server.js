@@ -88,8 +88,7 @@ const {  receiveWebhook, registerWebhook  } = require('@shopify/koa-shopify-webh
 
       router.post('/webhooks/orders/create', webhook, (ctx) => {
         console.log('received webhook order: ', ctx.state.webhook);
-
-        ctx.state.webhook.payload
+        comhub.createOrder(ctx.state.webhook.payload);
       });
 
       router.post('/webhooks/products/create', webhook, (ctx) => {
@@ -105,9 +104,6 @@ const {  receiveWebhook, registerWebhook  } = require('@shopify/koa-shopify-webh
       server.use(router.routes());
 
       server.listen(port, () => {
-
-        comhub.sendOrder({a: 4});
-        // console.log(core);
         console.log(`> Ready on http://localhost:${port}`);
       });
 

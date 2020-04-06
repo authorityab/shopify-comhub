@@ -1,27 +1,17 @@
+var ApiBase = require('./api-base.js');
 
-const fetch = require('node-fetch');
-
-
-class Order {
-  constructur(baseUrl) {
-    this.baseUrl = baseUrl;
-    console.log('order ' + baseUrl);
+class Order extends ApiBase {
+  constructor(baseUrl) {
+    super(baseUrl);
   }
 
   create(order) {
-    fetch(this.baseUrl + '/order/receive', {
-        method: 'post',
-        body: JSON.stringify(order),
-        headers: {
-          'Content-Type': 'application/json',
-          'Ocp-Apim-Subscription-Key': process.env.Ocp_Apim_Subscription_Key,
-          'Ocp-Apim-Trace': true
-        },
-      })
+    this.send('/order/receive', 'post', order)
       .then(res => res.text())
       .then(body => console.log(body))
-      .catch(error => console.log('UÄÄÄHH: ' + error));
+      .catch(error => console.log(error));
   }
 }
+
 
 module.exports = Order;

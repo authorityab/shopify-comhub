@@ -1,30 +1,10 @@
-
-
 const Order = require('./api/order.js');
 
 class ComHub {
-  constructur() {
-    console.log('comhub');
+  constructor() {
     this.baseUrl = 'https://comhub-dev-apim.azure-api.net';
-  }
-
-  createOrder(order) {
-    console.log('baseUrl: ' + this.baseUrl);
-    fetch('https://comhub-dev-apim.azure-api.net/order/receive', {
-        method: 'post',
-        body: JSON.stringify(order),
-        headers: {
-          'Content-Type': 'application/json',
-          'Ocp-Apim-Subscription-Key': process.env.Ocp_Apim_Subscription_Key,
-          'Ocp-Apim-Trace': true
-        },
-      })
-      .then(res => res.text())
-      .then(body => console.log(body))
-      .catch(error => console.log('UÄÄÄHH: ' + error));
+    this.order = new Order(this.baseUrl);
   }
 }
 
-
-
-module.exports = ComHub
+module.exports = ComHub;

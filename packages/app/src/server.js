@@ -31,8 +31,6 @@ const SHOPIFY_API_SECRET_KEY = process.env.SHOPIFY_API_SECRET;
 const SHOPIFY_API_KEY = process.env.SHOPIFY_API_KEY;
 const HOST = process.env.HOST;
 
-console.log('SHOPIFY_API_SECRET_KEY: ' + SHOPIFY_API_SECRET_KEY);
-
 app.prepare().then(() => {
     const server = new Koa();
     const router = new Router();

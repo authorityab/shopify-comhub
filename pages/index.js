@@ -5,7 +5,7 @@ const Index = () => (
    <Layout>
      <p>Shopify-ComHub</p>
      <TextStyle variation="positive">
-       1.0.0
+       1.0.0-lurig.1
      </TextStyle>
    </Layout>
   </Page>

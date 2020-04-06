@@ -1,0 +1,13 @@
+{
+  "name": "@shopify-comhub/core",
+  "version": "1.0.0",
+  "author": "Authority",
+  "license": "MIT",
+  "main": "./src/main.js",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
